@@ -2,6 +2,7 @@ backend:
   name: github
   repo: thickandfast/for
   branch: main
+  site_domain: benevolent-raindrop-27f3f0.netlify.app
 
 media_folder: "public/images/artikler"
 public_folder: "/images/artikler"
