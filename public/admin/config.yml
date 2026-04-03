@@ -1,0 +1,29 @@
+backend:
+  name: github
+  repo: thickandfast/for
+  branch: main
+
+media_folder: "public/images/artikler"
+public_folder: "/images/artikler"
+
+collections:
+  - name: "artikler"
+    label: "Artikler"
+    folder: "content/artikler"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Tittel", name: "title", widget: "string" }
+      - { label: "Ingress", name: "ingress", widget: "text" }
+      - { label: "Publiseringsdato", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - label: "Kategori"
+        name: "kategori"
+        widget: "select"
+        options:
+          - { label: "Strøm", value: "strom" }
+          - { label: "Mobil", value: "mobil" }
+          - { label: "Bredbånd", value: "bredband" }
+          - { label: "Forsikring", value: "forsikring" }
+          - { label: "Generelt", value: "generelt" }
+      - { label: "Innhold", name: "body", widget: "markdown" }
+      - { label: "Publisert", name: "published", widget: "boolean", default: true }
