@@ -2,7 +2,7 @@ backend:
   name: github
   repo: thickandfast/for
   branch: main
-  site_domain: benevolent-raindrop-27f3f0.netlify.app
+  base_url: https://soft-breeze-f529.slagislag.workers.dev/callback
 
 media_folder: "artikler/images"
 public_folder: "/artikler/images"
