@@ -3,3 +3,28 @@ backend:
   repo: thickandfast/for
   branch: main
   site_domain: benevolent-raindrop-27f3f0.netlify.app
+
+media_folder: "artikler/images"
+public_folder: "/artikler/images"
+
+collections:
+  - name: "artikler"
+    label: "Artikler"
+    folder: "content/artikler"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Tittel", name: "title", widget: "string" }
+      - { label: "Ingress", name: "ingress", widget: "text" }
+      - { label: "Dato", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - label: "Kategori"
+        name: "kategori"
+        widget: "select"
+        options:
+          - { label: "Strøm", value: "strom" }
+          - { label: "Mobil", value: "mobil" }
+          - { label: "Bredbånd", value: "bredband" }
+          - { label: "Forsikring", value: "forsikring" }
+          - { label: "Generelt", value: "generelt" }
+      - { label: "Innhold", name: "body", widget: "markdown" }
+      - { label: "Publisert", name: "published", widget: "boolean", default: true }
