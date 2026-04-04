@@ -3,7 +3,7 @@ backend:
   repo: thickandfast/for
   branch: main
   auth_type: implicit
-  app_id: DIN_CLIENT_ID_HER
+  app_id: Ov23liQq2sjeKuTjhg6M
 
 media_folder: "public/images/artikler"
 public_folder: "/images/artikler"
