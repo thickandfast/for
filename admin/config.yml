@@ -2,7 +2,8 @@ backend:
   name: github
   repo: thickandfast/for
   branch: main
-  site_domain: benevolent-raindrop-27f3f0.netlify.app
+  auth_type: implicit
+  app_id: DIN_CLIENT_ID_HER
 
 media_folder: "public/images/artikler"
 public_folder: "/images/artikler"
