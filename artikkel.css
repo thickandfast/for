@@ -10,16 +10,14 @@
 html { font-size: 17px; }
 body { font-family: 'Source Serif 4', Georgia, serif; background: var(--bg); color: var(--ink); line-height: 1.72; -webkit-font-smoothing: antialiased; }
 .site-nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 1.5rem; }
-.site-nav-inner { max-width: var(--col); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1.8rem; min-height: 58px; }
-.site-logo { font-family: 'Lora', serif; font-size: 1.15rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
+.site-nav-inner { max-width: var(--col); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1.8rem; min-height: 66px; }
+.site-logo { font-family: 'Lora', serif; font-size: 1.28rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; white-space: nowrap; }
 .site-logo span { color: var(--green); font-weight: 600; }
-.nav-links { display: flex; align-items: center; gap: 1.4rem; }
-.nav-link { font-size: 0.78rem; color: var(--ink-muted); text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; }
-.nav-link.active { color: var(--ink); font-weight: 600; }
-.article-menu { background: rgba(255, 250, 243, 0.76); border-bottom: 1px solid var(--border); padding: 0.65rem 1.5rem; }
-.article-menu-inner { max-width: var(--col); margin: 0 auto; display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; }
-.article-menu a { color: var(--ink-muted); font-size: 0.74rem; line-height: 1.3; text-decoration: none; }
-.article-menu a:hover { color: var(--green); }
+.nav-links { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; }
+.nav-link { border: 1px solid var(--border); border-radius: 4px; background: var(--surface); color: var(--ink-muted); font-size: 0.72rem; letter-spacing: 0.06em; line-height: 1; padding: 0.55rem 0.8rem; text-decoration: none; text-transform: uppercase; transition: border-color 0.15s, color 0.15s, background 0.15s; }
+.nav-link:hover, .nav-link.active { background: var(--green-light); border-color: var(--green); color: var(--green); }
+.nav-section { background: transparent; }
+.nav-tool { color: var(--ink); }
 .article-wrap { max-width: var(--col); margin: 0 auto; padding: 3rem 1.5rem 5rem; }
 .article-meta { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.2rem; }
 .article-tag { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--green-light); color: var(--green); padding: 0.25em 0.7em; border-radius: 2px; }
@@ -53,13 +51,24 @@ li { margin-bottom: 0.45rem; }
 .card-title { font-family: 'Lora', serif; font-size: 1.15rem; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; margin-bottom: 0.4rem; transition: color 0.12s; }
 .article-card:hover .card-title { color: var(--green); }
 .card-ingress { font-size: 0.88rem; color: var(--ink-muted); line-height: 1.55; max-width: 600px; }
+.home-wrap { max-width: var(--col); margin: 0 auto; padding: 4rem 1.5rem 5rem; }
+.home-kicker { color: var(--green); font-size: 0.76rem; letter-spacing: 0.08em; margin-bottom: 0.8rem; text-transform: uppercase; }
+.home-title { font-size: clamp(2.2rem, 8vw, 4.6rem); margin-bottom: 1rem; max-width: 9ch; }
+.home-ingress { color: var(--ink-mid); font-size: 1.05rem; line-height: 1.65; max-width: 42rem; margin-bottom: 2rem; }
+.home-actions { display: grid; gap: 0.75rem; max-width: 420px; }
+.home-action { border: 1px solid var(--border); border-radius: 4px; background: var(--surface); color: var(--ink); display: block; font-family: 'Lora', serif; font-size: 1rem; line-height: 1.2; padding: 1rem 1.1rem; text-decoration: none; }
+.home-action span { color: var(--ink-muted); display: block; font-family: 'Source Serif 4', Georgia, serif; font-size: 0.82rem; line-height: 1.45; margin-top: 0.25rem; }
+.home-action:hover { border-color: var(--green); }
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .site-nav { padding: 0 1.1rem; }
-  .site-nav-inner { align-items: flex-start; flex-direction: column; gap: 0.35rem; padding: 0.85rem 0; }
-  .nav-links { gap: 1rem; }
-  .article-menu { padding: 0.7rem 1.1rem; }
+  .site-nav-inner { align-items: stretch; flex-direction: column; gap: 0.8rem; padding: 1rem 0; }
+  .site-logo { font-size: 1.7rem; }
+  .nav-links { display: grid; grid-template-columns: 1fr; gap: 0.55rem; }
+  .nav-link { display: block; font-size: 0.88rem; padding: 0.95rem 1rem; text-align: center; }
   .article-wrap { padding: 2rem 1.1rem 4rem; }
   .page-header { padding: 2rem 1.1rem 0; }
   .articles { padding: 0 1.1rem 4rem; }
+  .home-wrap { padding: 2.3rem 1.1rem 4rem; }
+  .home-title { max-width: 8ch; }
 }
