@@ -1,0 +1,88 @@
+{
+  "_meta": {
+    "versjon": "1.1",
+    "oppdatert": "2026-04-02",
+    "kilde": "Leverandørenes egne nettsider + bytt.no april 2026",
+    "notat": "Kun faste listepriser. Ingen kampanjer, rabatter eller bindingstid. Oppdater kvartalsvis."
+  },
+  "mobil": {
+    "notat": "Alle inkluderer fri tale og SMS i Norge og EU/EØS. Sortert billigst først per datakategori.",
+    "kategorier": {
+      "1": [
+        {"navn": "Chilimobil", "pris": 119, "nett": "Ice", "merknad": "1 GB", "kundeservice": false},
+        {"navn": "PlussMobil", "pris": 119, "nett": "Telenor", "merknad": "1 GB", "kundeservice": false},
+        {"navn": "Happybytes", "pris": 129, "nett": "Telenor", "merknad": "1 GB", "kundeservice": false}
+      ],
+      "5": [
+        {"navn": "Happybytes", "pris": 148, "nett": "Telenor", "merknad": "5 GB", "kundeservice": false},
+        {"navn": "Chilimobil", "pris": 159, "nett": "Ice", "merknad": "5 GB", "kundeservice": false},
+        {"navn": "OneCall", "pris": 169, "nett": "Telia", "merknad": "5 GB", "kundeservice": false}
+      ],
+      "10": [
+        {"navn": "Happybytes", "pris": 178, "nett": "Telenor", "merknad": "10 GB", "kundeservice": false},
+        {"navn": "Chilimobil", "pris": 189, "nett": "Ice", "merknad": "10 GB", "kundeservice": false},
+        {"navn": "OneCall", "pris": 199, "nett": "Telia", "merknad": "10 GB", "kundeservice": false}
+      ],
+      "12": [
+        {"navn": "Happybytes", "pris": 198, "nett": "Telenor", "merknad": "12 GB – kåret best i test", "kundeservice": false},
+        {"navn": "Chilimobil", "pris": 209, "nett": "Ice", "merknad": "12 GB", "kundeservice": false},
+        {"navn": "Talkmore", "pris": 229, "nett": "Telenor", "merknad": "Data Rollover inkl.", "kundeservice": true}
+      ],
+      "20": [
+        {"navn": "Happybytes", "pris": 228, "nett": "Telenor", "merknad": "20 GB", "kundeservice": false},
+        {"navn": "Chilimobil", "pris": 239, "nett": "Ice", "merknad": "20 GB", "kundeservice": false},
+        {"navn": "Talkmore", "pris": 259, "nett": "Telenor", "merknad": "Data Rollover inkl.", "kundeservice": true}
+      ],
+      "30": [
+        {"navn": "Happybytes", "pris": 248, "nett": "Telenor", "merknad": "30 GB", "kundeservice": false},
+        {"navn": "Chilimobil", "pris": 259, "nett": "Ice", "merknad": "30 GB", "kundeservice": false},
+        {"navn": "Talkmore", "pris": 289, "nett": "Telenor", "merknad": "Data Rollover inkl.", "kundeservice": true}
+      ],
+      "50": [
+        {"navn": "Happybytes", "pris": 278, "nett": "Telenor", "merknad": "50 GB", "kundeservice": false},
+        {"navn": "Chilimobil", "pris": 289, "nett": "Ice", "merknad": "50 GB", "kundeservice": false},
+        {"navn": "Talkmore", "pris": 349, "nett": "Telenor", "merknad": "Data Rollover inkl.", "kundeservice": true}
+      ],
+      "999": [
+        {"navn": "Happybytes", "pris": 298, "nett": "Telenor", "merknad": "Fri data, strupes etter 108 GB", "kundeservice": false},
+        {"navn": "Chilimobil", "pris": 349, "nett": "Ice", "merknad": "Fri data, strupes etter 100 GB", "kundeservice": false},
+        {"navn": "Ice MAX", "pris": 349, "nett": "Ice", "merknad": "Fri data inkl. Netflix Basis", "kundeservice": false}
+      ]
+    }
+  },
+  "bredband": {
+    "notat": "Faste listepriser uten kampanjer eller binding. Tilgjengelighet varierer per adresse. Sortert billigst først.",
+    "hastigheter": {
+      "75": [
+        {"navn": "Talkmore", "pris": 749, "teknologi": "Fiber", "merknad": "Telenor-fiber, ingen binding, uten ruter", "kundeservice": true},
+        {"navn": "Bahnhof", "pris": 679, "teknologi": "Fiber", "merknad": "Telenor-infrastruktur, begrenset dekning", "kundeservice": false},
+        {"navn": "GlobalConnect", "pris": 699, "teknologi": "Fiber", "merknad": "Telenor-nett", "kundeservice": false}
+      ],
+      "100": [
+        {"navn": "Bahnhof", "pris": 679, "teknologi": "Fiber", "merknad": "Telenor-infrastruktur, begrenset dekning", "kundeservice": false},
+        {"navn": "GlobalConnect", "pris": 699, "teknologi": "Fiber", "merknad": "Telenor-nett", "kundeservice": false},
+        {"navn": "Talkmore", "pris": 749, "teknologi": "Fiber", "merknad": "Telenor-fiber, ingen binding, uten ruter", "kundeservice": true}
+      ],
+      "200": [
+        {"navn": "Talkmore", "pris": 849, "teknologi": "Fiber", "merknad": "Telenor-fiber, ingen binding", "kundeservice": true},
+        {"navn": "Bahnhof", "pris": 749, "teknologi": "Fiber", "merknad": "Telenor-infrastruktur, begrenset dekning", "kundeservice": false},
+        {"navn": "GlobalConnect", "pris": 779, "teknologi": "Fiber", "merknad": "Telenor-nett", "kundeservice": false}
+      ],
+      "500": [
+        {"navn": "Bahnhof", "pris": 849, "teknologi": "Fiber", "merknad": "Telenor-infrastruktur, begrenset dekning", "kundeservice": false},
+        {"navn": "GlobalConnect", "pris": 879, "teknologi": "Fiber", "merknad": "Telenor-nett", "kundeservice": false},
+        {"navn": "Altibox", "pris": 899, "teknologi": "Fiber", "merknad": "Via lokalt nett", "kundeservice": false}
+      ],
+      "600": [
+        {"navn": "Talkmore", "pris": 999, "teknologi": "Fiber", "merknad": "Telenor-fiber, ingen binding", "kundeservice": true},
+        {"navn": "Altibox", "pris": 1099, "teknologi": "Fiber", "merknad": "Via lokalt nett", "kundeservice": false},
+        {"navn": "Telenor", "pris": 1149, "teknologi": "Fiber", "merknad": "", "kundeservice": false}
+      ],
+      "1000": [
+        {"navn": "Talkmore", "pris": 1199, "teknologi": "Fiber", "merknad": "Telenor-fiber, ingen binding, uten ruter", "kundeservice": true},
+        {"navn": "Altibox", "pris": 1329, "teknologi": "Fiber", "merknad": "Nasjonal listepris", "kundeservice": false},
+        {"navn": "Telenor", "pris": 1349, "teknologi": "Fiber", "merknad": "", "kundeservice": false}
+      ]
+    }
+  }
+}
