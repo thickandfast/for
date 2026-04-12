@@ -1,0 +1,22 @@
+name: Sjekk prisdata
+
+on:
+  schedule:
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Lag prisrapport
+        run: python scripts/check_prices.py
+      - name: Last opp rapport
+        uses: actions/upload-artifact@v4
+        with:
+          name: prisrapport
+          path: price-report.md

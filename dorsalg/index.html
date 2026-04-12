@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dørsalg – forbruker.app</title>
+<meta name="description" content="Få hjelp mens selgeren står ved døren. Avvis høflig eller sjekk pakkens pris.">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}:root{--cream:#faf7f2;--ink:#1a1a18;--green:#2d6a4f;--green-light:#52b788;--red:#c1121f;--red-light:#e63946;--gold:#d4a017;--line:#edeae4;--shadow:rgba(26,26,24,.12)}body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;padding:1.2rem;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 80px,rgba(0,0,0,.018) 80px,rgba(0,0,0,.018) 81px),repeating-linear-gradient(0deg,transparent,transparent 80px,rgba(0,0,0,.018) 80px,rgba(0,0,0,.018) 81px);pointer-events:none}.wrap{position:relative;z-index:1;max-width:520px;margin:0 auto}.brand{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#777;margin:.4rem 0 1rem}.card{background:white;border-radius:18px;padding:2rem 1.3rem;box-shadow:0 2px 0 #e0ddd8,0 8px 32px var(--shadow),0 32px 64px rgba(26,26,24,.06);border:1.5px solid var(--line);text-align:center;margin-bottom:1rem}.door-icon{font-size:3rem;margin-bottom:.6rem;display:block}h1{font-family:Syne,sans-serif;font-size:1.9rem;font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:.5rem}h1 span{color:var(--green)}.subtitle{font-size:.96rem;color:#777;font-weight:300;margin-bottom:1.6rem;line-height:1.5}.btn{display:block;width:100%;padding:1rem 1.2rem;border:0;border-radius:12px;font-family:Syne,sans-serif;font-size:1rem;font-weight:700;cursor:pointer;margin-bottom:.8rem}.btn-green{background:linear-gradient(135deg,var(--green),var(--green-light));color:white;box-shadow:0 4px 20px rgba(45,106,79,.35)}.btn-red{background:linear-gradient(135deg,var(--red),var(--red-light));color:white;box-shadow:0 4px 20px rgba(193,18,31,.3)}.panel{display:none;margin-top:.8rem;text-align:left}.panel.open{display:block;animation:slideIn .25s ease}@keyframes slideIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}.avvis-header{background:linear-gradient(135deg,#fff3cd,#fdebc8);border:1.5px solid #f0d080;border-radius:12px;padding:.85rem 1rem;margin-bottom:1rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8b6914;line-height:1.5;text-align:center}.sentence{background:#f9f7f4;border:1.5px solid var(--line);border-radius:12px;padding:.85rem;margin-bottom:.6rem;display:grid;grid-template-columns:1fr auto;gap:.7rem;align-items:center}.sentence span{font-size:.92rem;line-height:1.45}.speak{background:white;border:1.5px solid #d0ccc5;border-radius:8px;padding:.35rem .55rem;font-family:Syne,sans-serif;font-size:.68rem;font-weight:700;color:#777;cursor:pointer}.speak.on{background:var(--green);border-color:var(--green);color:white}.tool{text-align:left}.tool h2{font-family:Syne,sans-serif;font-size:1.25rem;margin-bottom:.4rem}.tool p{color:#777;font-size:.92rem;line-height:1.55;margin-bottom:1rem}.price-input{display:grid;grid-template-columns:1fr auto;gap:.6rem;margin-bottom:1rem}.price-input input{border:1.5px solid var(--line);border-radius:10px;padding:.85rem;font-size:1rem}.price-input button{border:0;border-radius:10px;background:var(--ink);color:white;padding:.85rem 1rem;font-weight:700}.items{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}.pkg{border:2px solid #e6e0d8;border-radius:10px;background:#fff;padding:.85rem;text-align:left;cursor:pointer}.pkg.on{border-color:#ff3c00;background:#fff8f4}.pkg small{display:block;color:#777;margin:.25rem 0 .4rem;line-height:1.35}.pkg strong{display:block;color:#ff3c00}.result{display:none;margin-top:1rem;border:2px solid #ff3c00;border-radius:12px;background:#1a1a1a;color:white;padding:1rem;text-align:center}.result.open{display:block}.result .num{font-family:Syne,sans-serif;font-size:2rem;color:#ff6a00;margin:.3rem 0}.result.ok{border-color:#00a86b}.result.ok .num{color:#00cc66}.fineprint{text-align:center;font-size:.68rem;color:#999;letter-spacing:.08em;text-transform:uppercase;margin:1rem 0}@media(max-width:460px){.items{grid-template-columns:1fr}.price-input{grid-template-columns:1fr}.card{padding:1.5rem 1rem}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="brand">forbruker.app</div>
+  <section class="card">
+    <span class="door-icon">🚪</span>
+    <h1>Det <span>banker</span> på!</h1>
+    <p class="subtitle">En selger er ved døren. Hva vil du gjøre?</p>
+    <button class="btn btn-green" id="exploreBtn">Utforsk tilbudet</button>
+    <button class="btn btn-red" id="rejectBtn">Avvis selger</button>
+    <div class="panel" id="rejectPanel">
+      <div class="avvis-header">Les en av disse for selgeren, smil forståelsesfullt og lukk deretter døren.</div>
+      <div id="sentences"></div>
+    </div>
+  </section>
+  <section class="card panel tool" id="toolPanel">
+    <h2>Pakkekontrollen</h2>
+    <p>Legg inn selgers pakkepris og kryss av for det selgeren sier er inkludert. Tallene er foreløpig en kontrollmodell, ikke live markedsdata.</p>
+    <div class="price-input"><input id="sellerPrice" type="number" inputmode="numeric" value="1699" min="0" step="10" aria-label="Selgers pakkepris per måned"><button id="calcBtn">Sjekk</button></div>
+    <div class="items" id="items"></div>
+    <div class="result" id="result"></div>
+    <div class="fineprint">Be alltid om skriftlig tilbud før du sier ja.</div>
+  </section>
+</main>
+<script>
+const phrases=["Takk for at du kom innom, men jeg er ikke interessert.","Jeg setter pris på besøket, men dette passer ikke for meg.","Nei takk, jeg ønsker ikke å kjøpe noe i dag.","Jeg har allerede det jeg trenger, men takk likevel.","Dette er ikke aktuelt for meg, men ha en fin dag videre.","Jeg ønsker ikke å bruke tid på dette nå, beklager.","Takk, men jeg takker nei denne gangen.","Jeg er ikke interessert, men lykke til videre.","Dette passer dessverre ikke for meg, takk for forståelsen.","Nei takk, jeg foretrekker å ikke handle på døren."];
+const packages=[["strom","Strøm","Fastpris strømavtale",799],["internett","Internett 1 Gbit","Fiber bredbånd",649],["alarm","Boligalarm","Overvåkning og installasjon",399],["forsikring","Innboforsikring","Full dekning",299],["tv","TV-pakke Basis","40+ kanaler",249],["mobil","Mobilabonnement","20 GB data",499],["service","Serviceabonnement","Håndverker ved behov",149],["spot","Spotpris-tillegg","Administrasjonsgebyr",49]];
+const selected=Object.fromEntries(packages.map(p=>[p[0],true]));let currentBtn=null;
+document.getElementById("sentences").innerHTML=phrases.map((p,i)=>`<div class="sentence"><span>${i+1}. ${p}</span><button class="speak" data-text="${p.replaceAll('"',"&quot;")}">Les</button></div>`).join("");
+document.getElementById("items").innerHTML=packages.map(p=>`<button class="pkg on" data-id="${p[0]}"><b>${p[1]}</b><small>${p[2]}</small><strong>${p[3]} kr/mnd</strong></button>`).join("");
+document.getElementById("rejectBtn").onclick=()=>document.getElementById("rejectPanel").classList.toggle("open");
+document.getElementById("exploreBtn").onclick=()=>document.getElementById("toolPanel").classList.toggle("open");
+document.getElementById("items").onclick=e=>{const btn=e.target.closest(".pkg");if(!btn)return;selected[btn.dataset.id]=!selected[btn.dataset.id];btn.classList.toggle("on",selected[btn.dataset.id]);calculate()};
+document.getElementById("calcBtn").onclick=calculate;document.getElementById("sellerPrice").oninput=calculate;
+document.addEventListener("click",e=>{const btn=e.target.closest(".speak");if(!btn||!("speechSynthesis"in window))return;if(currentBtn){speechSynthesis.cancel();currentBtn.classList.remove("on")}if(currentBtn===btn){currentBtn=null;return}const u=new SpeechSynthesisUtterance(btn.dataset.text);u.lang="nb-NO";u.rate=.92;u.onend=()=>btn.classList.remove("on");btn.classList.add("on");currentBtn=btn;speechSynthesis.speak(u)});
+function calculate(){const wanted=packages.filter(p=>selected[p[0]]),sum=wanted.reduce((a,p)=>a+p[3],0),seller=Number(document.getElementById("sellerPrice").value||0),diff=seller-sum,res=document.getElementById("result");res.className="result open"+(diff<=0?" ok":"");res.innerHTML=diff>0?`<div>Du betaler mer enn enkeltdelene du faktisk vil ha.</div><div class="num">${diff.toLocaleString("nb-NO")} kr/mnd</div><div>${(diff*12).toLocaleString("nb-NO")} kr/år. Be om å få kjøpe bare ${wanted.length} relevante deler, eller takk nei.</div>`:`<div>Pakken ser billigere ut enn enkeltdelene.</div><div class="num">${Math.abs(diff).toLocaleString("nb-NO")} kr/mnd</div><div>Sjekk bindingstid, gebyrer og hva prisen blir etter kampanjeperioden.</div>`}
+calculate();
+</script>
+</body>
+</html>
