@@ -31,11 +31,17 @@
     <button class="filter-btn" onclick="filterArticles('bredband', this)">Bredbånd</button>
     <button class="filter-btn" onclick="filterArticles('forsikring', this)">Forsikring</button>
     <button class="filter-btn" onclick="filterArticles('personvern', this)">Personvern</button>
+    <button class="filter-btn" onclick="filterArticles('spare', this)">Spare penger</button>
     <button class="filter-btn" onclick="filterArticles('abonnementer', this)">Abonnementer</button>
     <button class="filter-btn" onclick="filterArticles('forbrukerfeller', this)">Forbrukerfeller</button>
   </div>
 </div>
 <div class="articles" id="articleList">
+  <a class="article-card" href="/artikler/sjekk-faste-kostnader-arlig.html" data-tag="spare">
+    <div class="card-meta"><span class="card-tag">Spare penger</span><span class="card-date">April 2026</span></div>
+    <div class="card-title">Slik går du gjennom faste kostnader én gang i året</div>
+    <div class="card-ingress">En praktisk rutine for mobil, bredbånd, forsikring, strøm, trening og små abonnementer.</div>
+  </a>
   <a class="article-card" href="/artikler/strom-spotpris-paslag-norgespris.html" data-tag="strom">
     <div class="card-meta"><span class="card-tag">Strøm</span><span class="card-date">April 2026</span></div>
     <div class="card-title">Strømavtale forklart: spotpris, påslag og Norgespris</div>
@@ -46,15 +52,35 @@
     <div class="card-title">Bredbånd og TV-pakker: er bundle egentlig billigst?</div>
     <div class="card-ingress">Pakkeløsninger markedsføres som enkle og rimelige. Men mange betaler for kanaler og tjenester de knapt bruker.</div>
   </a>
+  <a class="article-card" href="/artikler/bredband-hastighet-behov.html" data-tag="bredband">
+    <div class="card-meta"><span class="card-tag">Bredbånd</span><span class="card-date">April 2026</span></div>
+    <div class="card-title">Hvor mye bredbåndshastighet trenger du egentlig?</div>
+    <div class="card-ingress">Mange betaler for mer hastighet enn de trenger. Slik finner du riktig nivå.</div>
+  </a>
   <a class="article-card" href="/artikler/dorsalg.html" data-tag="forbrukerfeller">
     <div class="card-meta"><span class="card-tag">Forbrukerfeller</span><span class="card-date">April 2026</span></div>
     <div class="card-title">Dørsalg: gode tilbud eller dyr felle?</div>
     <div class="card-ingress">Når avtalen inngås under tidspress, er det lett å si ja uten å ha sammenlignet.</div>
   </a>
+  <a class="article-card" href="/artikler/pakkepriser-bundle-feller.html" data-tag="forbrukerfeller">
+    <div class="card-meta"><span class="card-tag">Forbrukerfeller</span><span class="card-date">April 2026</span></div>
+    <div class="card-title">Pakkepriser: når lønner bundle seg?</div>
+    <div class="card-ingress">Pakker kan gi rabatt, men også skjule produkter du ikke trenger.</div>
+  </a>
   <a class="article-card" href="/artikler/mobilabonnement.html" data-tag="mobil">
     <div class="card-meta"><span class="card-tag">Mobil</span><span class="card-date">April 2026</span></div>
     <div class="card-title">Mobilabonnement: slik unngår du å betale for mye</div>
     <div class="card-ingress">Mobilabonnement er en av de enkleste utgiftene å kutte. Her er hva du egentlig betaler for.</div>
+  </a>
+  <a class="article-card" href="/artikler/fri-data-mobil.html" data-tag="mobil">
+    <div class="card-meta"><span class="card-tag">Mobil</span><span class="card-date">April 2026</span></div>
+    <div class="card-title">Fri data på mobil: hva betyr det egentlig?</div>
+    <div class="card-ingress">Fri data kan være dyr trygghet hvis du egentlig bruker langt mindre.</div>
+  </a>
+  <a class="article-card" href="/artikler/kampanjepris-normalpris.html" data-tag="forbrukerfeller">
+    <div class="card-meta"><span class="card-tag">Forbrukerfeller</span><span class="card-date">April 2026</span></div>
+    <div class="card-title">Kampanjepris og normalpris: slik unngår du prishoppet</div>
+    <div class="card-ingress">Kampanjer kan være gode, men normalprisen avgjør hva du faktisk betaler.</div>
   </a>
   <a class="article-card" href="/artikler/medlemsrabatter.html" data-tag="spare">
     <div class="card-meta"><span class="card-tag">Spare penger</span><span class="card-date">April 2026</span></div>
@@ -76,6 +102,11 @@
     <div class="card-title">Treningssenter: pass på bindingstid og glemt abonnement</div>
     <div class="card-ingress">Mange ender med å betale for et medlemskap de bruker lite eller ikke husker at de har.</div>
   </a>
+  <a class="article-card" href="/artikler/bindingstid-abonnementer.html" data-tag="abonnementer">
+    <div class="card-meta"><span class="card-tag">Abonnementer</span><span class="card-date">April 2026</span></div>
+    <div class="card-title">Bindingstid på abonnementer: dette bør du sjekke</div>
+    <div class="card-ingress">Bindingstid kan være greit, men bare når rabatten er reell og behovet stabilt.</div>
+  </a>
   <a class="article-card" href="/artikler/strommetjenester.html" data-tag="abonnementer">
     <div class="card-meta"><span class="card-tag">Abonnementer</span><span class="card-date">April 2026</span></div>
     <div class="card-title">Strømmetjenester: små beløp som blir store over tid</div>
@@ -91,5 +122,16 @@ function filterArticles(tag, btn) {
   });
 }
 </script>
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <small>forbruker.app - uavhengige guider og verktøy</small>
+    <div class="footer-links">
+      <a href="/om-oss.html">Om oss</a>
+      <a href="/personvern.html">Personvern</a>
+      <a href="/kontakt.html">Kontakt</a>
+      <a href="/vilkar.html">Vilkår</a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
