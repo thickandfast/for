@@ -1,0 +1,443 @@
+
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aktuelt — forbruker.app</title>
+<meta name="description" content="Siste nytt om forbrukersaker i Norge. Uavhengige kommentarer uten reklame eller provisjoner.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap');
+
+  :root {
+    --bg: #f7f4ef;
+    --text: #1a1a18;
+    --muted: #888880;
+    --border: #e0ddd8;
+    --accent: #1a5c2a;
+    --accent-light: #eef5f0;
+    --tag-bg: #e8f0ea;
+    --tag-text: #1a5c2a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+  }
+
+  .header-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .site-name {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 20px;
+    transition: color 0.15s;
+  }
+
+  nav a:hover, nav a.aktiv { color: var(--text); }
+
+  .hero {
+    border-bottom: 1px solid var(--border);
+    padding: 48px 24px 40px;
+  }
+
+  .hero-inner { max-width: 780px; margin: 0 auto; }
+
+  .hero-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 600;
+    line-height: 1.15;
+    max-width: 560px;
+  }
+
+  .hero p {
+    color: var(--muted);
+    margin-top: 12px;
+    max-width: 480px;
+    font-size: 15px;
+  }
+
+  .innhold {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  .artikkel-liste { display: flex; flex-direction: column; }
+
+  .artikkel-kort {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: start;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .artikkel-kort:first-child { padding-top: 0; }
+
+  .artikkel-dato {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+
+  .artikkel-tittel {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(18px, 3vw, 22px);
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 8px;
+    transition: color 0.15s;
+  }
+
+  .artikkel-kort:hover .artikkel-tittel { color: var(--accent); }
+
+  .artikkel-ingress {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 12px;
+    max-width: 560px;
+  }
+
+  .artikkel-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .tag {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+
+  .artikkel-pil {
+    color: var(--muted);
+    font-size: 20px;
+    padding-top: 4px;
+    transition: transform 0.15s;
+  }
+
+  .artikkel-kort:hover .artikkel-pil {
+    transform: translateX(3px);
+    color: var(--accent);
+  }
+
+  /* Modal */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(20,20,18,0.5);
+    z-index: 100;
+    backdrop-filter: blur(2px);
+    animation: fadeIn 0.2s ease;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 16px;
+    overflow-y: auto;
+  }
+
+  .overlay.open { display: flex; }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  .modal {
+    background: var(--bg);
+    border-radius: 8px;
+    max-width: 680px;
+    width: 100%;
+    padding: 40px;
+    position: relative;
+    animation: slideUp 0.25s ease;
+  }
+
+  @keyframes slideUp { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+  .modal-lukk {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    line-height: 1;
+  }
+
+  .modal-lukk:hover { background: var(--border); color: var(--text); }
+
+  .modal-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .modal h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .modal-ingress {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .modal-brodtekst { font-size: 15px; line-height: 1.75; }
+  .modal-brodtekst p { margin-bottom: 16px; }
+  .modal-brodtekst p:last-child { margin-bottom: 0; }
+
+  .modal-kilder {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .modal-kilder a { color: var(--accent); text-decoration: none; }
+  .modal-kilder a:hover { text-decoration: underline; }
+
+  .modal-footer {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* Laster */
+  .laster { display: flex; flex-direction: column; gap: 20px; padding-top: 8px; }
+
+  .skeleton {
+    height: 80px;
+    background: linear-gradient(90deg, var(--border) 25%, #eae7e2 50%, var(--border) 75%);
+    background-size: 200% 100%;
+    border-radius: 4px;
+    animation: shimmer 1.4s infinite;
+  }
+
+  @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+  .tom { padding: 60px 0; text-align: center; color: var(--muted); font-family: 'Fraunces', serif; font-style: italic; font-size: 18px; }
+
+  @media (max-width: 600px) {
+    .modal { padding: 28px 20px; }
+    .artikkel-pil { display: none; }
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="site-name">forbruker.app</a>
+    <nav>
+      <a href="/strom">Strom</a>
+      <a href="/mobil">Mobil</a>
+      <a href="/bredband">Bredband</a>
+      <a href="/aktuelt" class="aktiv">Aktuelt</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Aktuelt</div>
+    <h1>Forbrukersaker du bor kjenne til</h1>
+    <p>Uavhengige kommentarer til det som skjer — uten reklame eller skjulte bindinger.</p>
+  </div>
+</div>
+
+<div class="innhold">
+  <div class="artikkel-liste" id="artikkelliste">
+    <div class="laster">
+      <div class="skeleton"></div>
+      <div class="skeleton" style="height:60px"></div>
+      <div class="skeleton" style="height:90px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="overlay" id="overlay" onclick="lukkModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-lukk" onclick="lukkModal()">&#215;</button>
+    <div class="modal-label">Aktuelt</div>
+    <h2 id="modal-tittel"></h2>
+    <div class="modal-ingress" id="modal-ingress"></div>
+    <div class="modal-brodtekst" id="modal-brodtekst"></div>
+    <div class="modal-kilder" id="modal-kilder"></div>
+    <div class="modal-footer" id="modal-tags"></div>
+  </div>
+</div>
+
+<script>
+// Bytt ut med din aktuelt-public Worker URL etter opprettelse
+const WORKER_URL = 'https://aktuelt-api.forbruker.app';
+
+async function hentArtikler() {
+  try {
+    const res = await fetch(WORKER_URL + '/aktuelt');
+    const artikler = await res.json();
+    visArtikler(artikler);
+  } catch (e) {
+    document.getElementById('artikkelliste').innerHTML =
+      '<div class="tom">Kunne ikke laste saker akkurat na.</div>';
+  }
+}
+
+function visArtikler(artikler) {
+  const container = document.getElementById('artikkelliste');
+
+  if (!artikler.length) {
+    container.innerHTML = '<div class="tom">Ingen aktuelle saker for oyeblikket.</div>';
+    return;
+  }
+
+  container.innerHTML = artikler.map(function(a) {
+    return '<a class="artikkel-kort" href="#' + a.id + '" onclick="apneArtikkel(event,\'' + a.id + '\')">'
+      + '<div>'
+      + '<div class="artikkel-dato">' + formaterDato(a.publisert) + '</div>'
+      + '<div class="artikkel-tittel">' + escHtml(a.tittel) + '</div>'
+      + '<div class="artikkel-ingress">' + escHtml(a.ingress) + '</div>'
+      + '<div class="artikkel-tags">'
+      + (a.tags || []).map(function(t) { return '<span class="tag">' + escHtml(t) + '</span>'; }).join('')
+      + '</div>'
+      + '</div>'
+      + '<div class="artikkel-pil">&rarr;</div>'
+      + '</a>';
+  }).join('');
+
+  // Sjekk URL-hash
+  var hash = window.location.hash.slice(1);
+  if (hash) {
+    var a = artikler.find(function(x) { return x.id === hash; });
+    if (a) visModal(a);
+  }
+}
+
+function apneArtikkel(e, id) {
+  e.preventDefault();
+  fetch(WORKER_URL + '/aktuelt/' + id)
+    .then(function(r) { return r.json(); })
+    .then(function(a) {
+      visModal(a);
+      history.pushState(null, '', '#' + id);
+    });
+}
+
+function visModal(a) {
+  document.getElementById('modal-tittel').textContent = a.tittel || '';
+  document.getElementById('modal-ingress').textContent = a.ingress || '';
+
+  // Brodtekst - splitt pa dobbelt linjeskift
+  var avsnitt = (a.brodtekst || '').split('\n\n').filter(Boolean);
+  document.getElementById('modal-brodtekst').innerHTML =
+    avsnitt.map(function(p) { return '<p>' + escHtml(p) + '</p>'; }).join('');
+
+  // Kilder
+  var kilderEl = document.getElementById('modal-kilder');
+  if (a.kilder && a.kilder.trim()) {
+    kilderEl.innerHTML = '<strong>Kilder:</strong><br>'
+      + escHtml(a.kilder).replace(/https?:\/\/[^\s,]+/g, function(url) {
+          return '<a href="' + url + '" target="_blank" rel="noopener">' + url + '</a>';
+        });
+    kilderEl.style.display = 'block';
+  } else if (a.kildeUrl) {
+    kilderEl.innerHTML = 'Kilde: <a href="' + escHtml(a.kildeUrl) + '" target="_blank" rel="noopener">'
+      + escHtml(a.kildeDomene || a.kildeUrl) + '</a>';
+    kilderEl.style.display = 'block';
+  } else {
+    kilderEl.style.display = 'none';
+  }
+
+  document.getElementById('modal-tags').innerHTML =
+    (a.tags || []).map(function(t) { return '<span class="tag">' + escHtml(t) + '</span>'; }).join('');
+
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function lukkModal(e) {
+  if (e && e.target !== document.getElementById('overlay') && !e.target.classList.contains('modal-lukk')) return;
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+  history.pushState(null, '', window.location.pathname);
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') lukkModal({ target: document.getElementById('overlay') });
+});
+
+function formaterDato(iso) {
+  if (!iso) return '';
+  return new Date(iso).toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+function escHtml(str) {
+  return String(str || '')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+hentArtikler();
+</script>
+
+</body>
+</html>
