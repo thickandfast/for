@@ -211,6 +211,13 @@
 
   .modal-lukk:hover { background: var(--border); color: var(--text); }
 
+  .modal-dato {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+  }
+
   .modal-label {
     font-size: 11px;
     letter-spacing: 0.12em;
@@ -319,6 +326,7 @@
   <div class="modal" id="modal">
     <button class="modal-lukk" onclick="lukkModal()">&#215;</button>
     <div class="modal-label">Aktuelt</div>
+    <div class="modal-dato" id="modal-dato"></div>
     <h2 id="modal-tittel"></h2>
     <div class="modal-ingress" id="modal-ingress"></div>
     <div class="modal-brodtekst" id="modal-brodtekst"></div>
@@ -383,6 +391,7 @@ function apneArtikkel(e, id) {
 }
 
 function visModal(a) {
+  document.getElementById('modal-dato').textContent = a.publisert ? formaterDato(a.publisert) : '';
   document.getElementById('modal-tittel').textContent = a.tittel || '';
   document.getElementById('modal-ingress').textContent = a.ingress || '';
 
